@@ -1,0 +1,4 @@
+name: RandomDrops
+version: '${version}'
+main: com.burchard36.github.RandomDrops
+api-version: 1.18

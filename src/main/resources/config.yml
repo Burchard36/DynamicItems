@@ -1,0 +1,36 @@
+
+# This just allows for more verbose logging when the plugin loads, this may be useful
+# When configuring, so you can see what's happening, if you find these logs annoying set this value to false
+DebugMode: true
+
+EnchantmentQualities:
+
+  Vanilla:
+    # Quality per level of the enchantment is set here
+    DAMAGE_ALL: 25
+  AdvancedEnchantments: # Don't worry, this won't load if you don't have the plugin loaded!
+    Trench: 100
+
+QualityNames:
+  # If you have a value over the one specified here, it will use the highest value found
+  0-100: "&7&lTRASH"
+  101-200: "&6&lCOMMON"
+  201-300: "&6&lUN-COMMON"
+
+#
+NameFormats:
+  - "%verb% of the %adjective% %noun%"
+  - "%noun%'s %adjective% %verb%"
+
+# Additional placeholder's
+# %lore% the content of the lore for the item
+# %player% the player who first received this item
+# %quality% the quality of this items name, specified above in QualityNames
+LoreFormats:
+
+  '0':
+    - "&f " # Skips a line
+    - "&b&l------------ &e&l< &a&lLore &e&l> &b&l------------"
+    - "%lore%"
+    - "&f " # Skips a line
+    - "&7&lItem Quality: %quality% "

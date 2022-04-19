@@ -1,0 +1,119 @@
+SomeRandomSword:
+
+  # Allows you to set the quality of the item
+  # This allows your players to compare items based on the quality number
+  # of the items
+  ItemQuality:
+    BaseValue: 100
+
+  # Not implemented, future versions this will actually work
+  ItemSettings:
+    # If you want to use the default minecraft name, set this to false
+    EnableName: false
+    # If you want to use the default minecraft lore, set this to false
+    EnableLore: false
+
+  # Remove this section if you want to use a random name from config.yml
+  Name:
+    # If you have chances set, what should the chance default to?
+    DefaultsTo: "0"
+    # If you want to override the default config.yml and not use Chances, set this value
+    # If you have Chances set + this field, the chances will be ignored
+    # Format: "%verb% of the %adjective% %noun%"
+
+    # If you set Format, its recommended you set quality change (That's if you want it of course)
+    # In this field, DO NOTE: If this is set, it's going to override ALL QualityChange's in Chances if this value exists
+    # QualityChange: +70
+
+    # Chances for the item name, each key MUST be a String (aka in Quotation marks)
+    Chances:
+      "0":
+        # Chance for this name to take effect, for better chances order your chance lowest to the highest like shown below
+        Chance: 25
+
+        # This Value will support the variables from config.ymls NameFormats
+        Value: "Destroyer of your mom"
+
+        # How much should this increase the quality? Remove this field if you don't want the quality to change.
+        # Add a + to the beginning to add a quality, add a - to the beginning to remove quality
+        QualityChange: +50
+      "1":
+        Chance: 50
+        Value: "Mad cuz bad"
+        QualityChange: +25
+  Material:
+    # If any of the Materials from below fail to proc Chances, then
+    # Choose a default Material (Should be the name/number of the key set in the list below
+    DefaultsTo: '0'
+    Chances:
+      '0':
+        Chance: 50
+        QualityChange: +50
+        Value: "DIAMOND_SWORD"
+      '1':
+        Chance: 50
+        QualityChange: +75
+        Value: "NETHERITE_SWORD"
+  Lore:
+    # If any of the Lores from Chances fail to proc Chances, then
+    # Choose a default Lore (Should be the name/number of the key set in the list below)
+    # Doesnt need to be set if you are not using Chances
+    DefaultsTo: '0'
+
+    # If this is set, if will override ALL LoreFormat's, even the once in Chances
+    # CUSTOM - Overrides lore from config.yml
+    # RANDOM - Uses a random LoreFormat from config.yml and adds your Lore content via %lore% placeholder
+    # OTHER - Uses a specific lore from config.yml, and inserts it via %lore% placeholder
+    LoreFormat:
+      Type: CUSTOM
+      # Only set this if you are using OTHER
+      Key: '0'
+
+
+    # If this is set, it will ignore all Chances & not load them, remove this field if you want to use Chances
+    # Supports all placeholders specified in config.yml, by default if LoreFormat is not present, it uses a CUSTOM lore format
+    # Instead of a random one from config.yml
+    Lore:
+      - "&f "
+      - "Lol this lore &4&lsucks"
+
+    # If this is set, it will ignore all Chance QualityChange's remove this field if you want to use Chances
+    QualityChange: +50
+
+    # DO NOTE!!!! Lore's in this section are not the only text your lore will have, view LoreFormat comments in Chances to
+    # See what I mean
+    Chances:
+      '0':
+        Chance: 50
+        QualityChange: +50
+        # If you want to instead use your own lore, instead of a format from config.yml, specify CUSTOM here
+        # If you remove LoreFormat, your lore will randomly be chosen from config.yml (IE, this field will be set to RANDOM), and then inserted using the %lore% placeholder
+        LoreFormat: CUSTOM
+        Value:
+          - "&f "
+          - "&e&oImagine only getting +50 quality for this"
+      '1':
+        Chance: 50
+        QualityChange: +75
+        # If you only want to use a specific lore format, specify the key from config.yml here
+        LoreFormat: '0'
+        Value:
+          - "&f "
+          - "&e&oNot bad, got +75 quality for this"
+
+    Enchantments:
+      # If any of the Materials from below fail to proc Chances, then
+      # Choose a default Material (Should be the name/number of the key set in the list below
+      DefaultsTo: 0
+      0:
+        Chance: 50
+        Value:
+          # Values are set like this:
+          # <enchantment>:<level min>-<level max>
+
+          # To use AdvancedEnchantments, put ae: in front of it like so
+          #- "ae:Flame:1-3"
+
+          # For vanilla enchantments, use: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
+          - "DAMAGE_ALL:1-4"
+

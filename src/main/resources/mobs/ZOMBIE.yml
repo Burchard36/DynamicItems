@@ -1,0 +1,8 @@
+Items:
+
+  #Values:
+  # DEFAULT - Will drop for vanilla mobs
+  # MythicMobs - Will drop for MythicMob MythicMob
+  plugin-hook: DEFAULT
+
+  Items:
