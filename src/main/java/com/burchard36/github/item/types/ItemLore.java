@@ -7,6 +7,7 @@ import com.burchard36.github.item.quality.ItemQualityField;
 import com.burchard36.github.item.lore.LoreFormat;
 import lombok.Getter;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.file.FileConfiguration;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
@@ -34,9 +35,10 @@ public class ItemLore {
         this.plugin = pluginInstance;
         this.logger = this.plugin.getDropLogger();
 
-        if (loreConfig.isList("QualityChange")) {
-            this.logger.debug("Using Lore QualityChange field, this will override all QualityChange's set in Chances section, items name: " + itemName);
-            this.quality = ItemQualityField.fromConfiguration(loreConfig.getConfigurationSection("QualityChange"), itemName, this.getLogger());
+        if (loreConfig.isString("QualityChange")) {
+            this.logger.debug("Using Lore QualityChange field, this will override all QualityChange's set in Chances section, items name: &e" + itemName);
+            this.quality = ItemQualityField.fromString(loreConfig.getString("QualityChange"));
+            if (this.quality == null) this.logger.warnServer("When specifying a static QualityChange in item: &e" + itemName + "&r the value was null when reached! This item will now use Quality's from Chance's section.");
         }
 
         if (loreConfig.isString("Lore")) {
@@ -54,19 +56,34 @@ public class ItemLore {
 
         if (this.loreList != null) {
             this.logger.debug("Using static Lore List for item: &e" + itemName + "&r skipping loading Chances...");
+            return;
         }
 
         final ConfigurationSection loreChances = loreConfig.getConfigurationSection("Chances");
         if (loreChances == null) {
             this.logger.warnServer("Chances for item: &e" + itemName + "&r was null when reached, if you feel this is an error contact a developer!");
+            return;
         }
 
+        if (!loreConfig.isString("DefaultsTo")) {
+            this.logger.warnServer("When loading lore for item: &e" + itemName + "&r You did not set a DefaultsTo value when ");
+        } else this.defaultsTo = loreConfig.getString("DefaultsTo");
+
+
+        this.loreChances = new HashMap<>();
         for (final String key : loreChances.getKeys(false)) {
             final ConfigurationSection sec = loreChances.getConfigurationSection(key);
             if (sec == null) {
                 this.logger.warnServer("When loading Chances for item: &e" + itemName + "&r the config key &e" + key + "&r was null when received, skipping this lore chance...");
                 continue;
             }
+
+            final ItemChance chance = ItemChance.fromConfiguration(loreChances.getConfigurationSection(key));
+            if (chance == null) {
+                this.logger.warnServer("Lore chance for item: &e" + itemName + "&r at key: &e" + key + "&r is invalid! Please review your configuration!");
+            }
+
+            FileConfiguration
         }
 
     }

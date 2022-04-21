@@ -26,6 +26,7 @@ public class LoreFormat {
      * @return null if configuration was invalid
      */
     public static LoreFormat fromConfiguration(final ConfigurationSection sec) {
+        if (sec == null) return null;
         final String stringType = sec.getString("Type");
         final String keyValue = sec.getString("Key");
 

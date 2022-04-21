@@ -22,6 +22,8 @@ public final class RandomDrops extends JavaPlugin {
         this.random = new Random();
         this.configManager = new ConfigManager(this);
         this.dropLogger = new Logger(this);
+
+
     }
 
     @Override

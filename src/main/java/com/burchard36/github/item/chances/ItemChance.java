@@ -29,7 +29,8 @@ public class ItemChance {
 
     public ItemChance() {}
 
-    public static ItemChance fromConfiguration(final ConfigurationSection section) {
+    public static ItemChance fromConfiguration(final @Nullable ConfigurationSection section) {
+        if (section == null) return null;
         if (!section.isInt("Chance")) {
             return null;
         }

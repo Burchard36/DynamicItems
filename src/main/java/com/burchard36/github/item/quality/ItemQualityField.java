@@ -1,16 +1,15 @@
 package com.burchard36.github.item.quality;
 
-import com.burchard36.github.Logger;
 import lombok.Getter;
-import org.bukkit.Bukkit;
-import org.bukkit.configuration.ConfigurationSection;
+
+import javax.annotation.Nullable;
 
 public class ItemQualityField {
 
     @Getter
     private final int amount;
     @Getter
-    private Operation operation;
+    private final Operation operation;
 
     public ItemQualityField(final int amount,
                             final Operation operation) {
@@ -18,7 +17,8 @@ public class ItemQualityField {
         this.operation = operation;
     }
 
-    public static ItemQualityField fromString(String quality) {
+    public static ItemQualityField fromString(@Nullable String quality) {
+        if (quality == null) return null;
         final Operation op;
         if (quality.startsWith("+")) {
             op = Operation.ADD;
