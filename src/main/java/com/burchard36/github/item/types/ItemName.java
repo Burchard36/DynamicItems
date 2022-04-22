@@ -5,29 +5,21 @@ import com.burchard36.github.RandomDrops;
 import com.burchard36.github.item.chances.InvalidValueGetException;
 import com.burchard36.github.item.chances.ItemChance;
 import com.burchard36.github.item.quality.ItemQualityField;
-import com.burchard36.github.item.quality.Operation;
 import com.burchard36.github.manager.configs.WordConfigs;
 import lombok.Getter;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
 
-import static com.burchard36.github.RandomDrops.textOf;
-
+@Getter
 public class ItemName {
 
-    @Getter
     private final Logger logger;
     private final RandomDrops plugin;
-    @Getter
     private String nameString = null;
-    @Getter
     private String defaultsTo;
-    @Getter
     private ItemQualityField qualityField = null;
-    @Getter
     private HashMap<String, ItemChance> nameChances = null;
 
 

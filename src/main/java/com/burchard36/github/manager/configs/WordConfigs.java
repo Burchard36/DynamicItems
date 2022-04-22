@@ -11,19 +11,14 @@ import java.util.List;
 
 import static com.burchard36.github.RandomDrops.textOf;
 
+@Getter
 public class WordConfigs {
 
     private final RandomDrops plugin;
-
-    @Getter
     public List<String> verbList;
-    @Getter
     public List<String> adjectiveList;
-    @Getter
     public List<String> nounList;
-    @Getter
     public List<String> verberList;
-    @Getter
     public List<String> nameFormats;
 
     public WordConfigs(final RandomDrops pluginInstance) {

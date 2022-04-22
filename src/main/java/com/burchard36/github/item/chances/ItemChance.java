@@ -1,30 +1,23 @@
 package com.burchard36.github.item.chances;
 
+import com.burchard36.github.item.lore.LoreType;
 import com.burchard36.github.item.quality.ItemQualityField;
-import com.burchard36.github.item.quality.Operation;
 import com.burchard36.github.item.lore.LoreFormat;
 import lombok.Getter;
 import lombok.Setter;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 
 import javax.annotation.Nullable;
 
 import java.util.List;
 
-import static com.burchard36.github.RandomDrops.textOf;
-
+@Getter @Setter
 public class ItemChance {
 
-    @Getter @Setter
     private int chance;
-    @Getter @Setter
     private ValueType valueType;
-    @Getter @Setter
     private Object value;
-    @Getter @Setter
     public ItemQualityField quality;
-    @Getter @Setter
     private LoreFormat loreFormat;
 
     public ItemChance() {}
@@ -54,12 +47,16 @@ public class ItemChance {
         if (section.get("Value") == null) return null;
         final Object obj = section.get("Value");
 
+        LoreFormat loreFormat;
+
+        loreFormat = LoreFormat.fromConfiguration(section);
+        if (loreFormat == null) loreFormat = new LoreFormat(LoreType.RANDOM, null);
 
 
         return new ItemChanceBuilder()
                 .setValue(obj)
                 .setChance(configChance)
-                .setLoreFormat(null)
+                .setLoreFormat(loreFormat)
                 .setQuality(qualityField)
                 .setValueType(type)
                 .build();

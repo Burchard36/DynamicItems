@@ -4,9 +4,9 @@ import lombok.Getter;
 
 import static com.burchard36.github.RandomDrops.textOf;
 
+@Getter
 public class Logger {
 
-    @Getter
     private final RandomDrops plugin;
     private boolean debug;
 

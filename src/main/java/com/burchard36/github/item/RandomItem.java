@@ -9,11 +9,10 @@ import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.configuration.ConfigurationSection;
 
+@Getter @Setter
 public class RandomItem {
 
-    @Getter @Setter
     private ItemName itemName = null;
-    @Getter @Setter
     private ItemLore itemLore = null;
 
     public RandomItem() {

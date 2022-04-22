@@ -9,9 +9,11 @@ SomeRandomSword:
   # Not implemented, future versions this will actually work
   ItemSettings:
     # If you want to use the default minecraft name, set this to false
-    EnableName: false
+    EnableName: true
     # If you want to use the default minecraft lore, set this to false
-    EnableLore: false
+    EnableLore: true
+
+
 
   # Remove this section if you want to use a random name from config.yml
   Name:
@@ -67,7 +69,7 @@ SomeRandomSword:
     LoreFormat:
       Type: CUSTOM
       # Only set this if you are using OTHER
-      Key: '0'
+      # Key: '0'
 
 
     # If this is set, it will ignore all Chances & not load them, remove this field if you want to use Chances
@@ -88,7 +90,9 @@ SomeRandomSword:
         QualityChange: +50
         # If you want to instead use your own lore, instead of a format from config.yml, specify CUSTOM here
         # If you remove LoreFormat, your lore will randomly be chosen from config.yml (IE, this field will be set to RANDOM), and then inserted using the %lore% placeholder
-        LoreFormat: CUSTOM
+        LoreFormat:
+          Type: CUSTOM
+          # key: '0'
         Value:
           - "&f "
           - "&e&oImagine only getting +50 quality for this"
@@ -96,24 +100,33 @@ SomeRandomSword:
         Chance: 50
         QualityChange: +75
         # If you only want to use a specific lore format, specify the key from config.yml here
-        LoreFormat: '0'
+        LoreFormat:
+          Type: CUSTOM
+          # key: '0'
         Value:
           - "&f "
           - "&e&oNot bad, got +75 quality for this"
 
+
     Enchantments:
       # If any of the Materials from below fail to proc Chances, then
       # Choose a default Material (Should be the name/number of the key set in the list below
-      DefaultsTo: 0
-      0:
-        Chance: 50
-        Value:
-          # Values are set like this:
-          # <enchantment>:<level min>-<level max>
+      DefaultsTo: '0'
+      # If this is set, it will ignore all Chance QualityChange's remove this field if you want to use Chances
+      QualityChange: +50
+      # If this is set, any Chances set will be ignored.
+      Enchantments:
+        - "DAMAGE_ALL:1-4"
+      Chances:
+        0:
+          Chance: 50
+          Value:
+            # Values are set like this:
+            # <enchantment>:<level min>-<level max>
 
-          # To use AdvancedEnchantments, put ae: in front of it like so
-          #- "ae:Flame:1-3"
+            # To use AdvancedEnchantments, put ae: in front of it like so
+            #- "ae:Flame:1-3"
 
-          # For vanilla enchantments, use: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
-          - "DAMAGE_ALL:1-4"
+            # For vanilla enchantments, use: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/enchantments/Enchantment.html
+            - "DAMAGE_ALL:1-4"
 

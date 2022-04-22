@@ -5,28 +5,22 @@ import com.burchard36.github.RandomDrops;
 import com.burchard36.github.item.chances.ItemChance;
 import com.burchard36.github.item.quality.ItemQualityField;
 import com.burchard36.github.item.lore.LoreFormat;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.configuration.file.FileConfiguration;
 
-import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.List;
 
+@Getter
 public class ItemLore {
 
     private final RandomDrops plugin;
-    @Getter
     private final Logger logger;
-    @Getter
     private LoreFormat loreFormat;
-    @Getter
     private List<String> loreList;
-    @Getter
     private String defaultsTo;
-    @Getter
     private ItemQualityField quality;
-    @Getter
     private HashMap<String, ItemChance> loreChances;
 
     public ItemLore(final ConfigurationSection loreConfig,
@@ -83,23 +77,14 @@ public class ItemLore {
                 this.logger.warnServer("Lore chance for item: &e" + itemName + "&r at key: &e" + key + "&r is invalid! Please review your configuration!");
             }
 
-            FileConfiguration
         }
 
     }
 
+    @Getter
+    @AllArgsConstructor
     private static class LoreValue {
-
-        @Getter
         private final List<String> lore;
-        @Getter
         private final ItemQualityField quality;
-
-        public LoreValue(final List<String> lore,
-                         final @Nullable ItemQualityField ItemQualityField) {
-            this.lore = lore;
-            this.quality = ItemQualityField;
-        }
-
     }
 }

@@ -1,7 +1,7 @@
 package com.burchard36.github.item.lore;
 
-import com.burchard36.github.Logger;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.MemorySection;
 
 import javax.annotation.Nullable;
 
