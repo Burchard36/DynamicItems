@@ -1,10 +1,11 @@
 package com.burchard36.github;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import static com.burchard36.github.RandomDrops.textOf;
 
-@Getter
+@Getter @Setter
 public class Logger {
 
     private final RandomDrops plugin;

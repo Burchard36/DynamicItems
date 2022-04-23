@@ -1,23 +1,24 @@
 package com.burchard36.github.item.lore;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.configuration.MemorySection;
 
 import javax.annotation.Nullable;
 
+@Getter @Setter
 public class LoreFormat {
 
     private final LoreType type;
-    private final String configKey;
+    private final @Nullable String loreKey;
 
     public LoreFormat(final LoreType type,
                       final @Nullable String loreKey) {
         if (type == LoreType.OTHER && loreKey == null) {
             throw new InvalidLoreFormatConfigurationException("Attempting to use a static LoreFormat, but a key was not set to grab from config.yml!");
         }
-
         this.type = type;
-        this.configKey = loreKey;
+        this.loreKey = loreKey;
     }
 
     /**

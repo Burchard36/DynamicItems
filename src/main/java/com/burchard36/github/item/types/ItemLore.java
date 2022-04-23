@@ -43,9 +43,7 @@ public class ItemLore {
         if (loreConfig.isString("LoreFormat")) {
             this.logger.debug("Using static LoreFormat field, this will override all LoreFormat's set in Chances for item: &e" + itemName);
             this.loreFormat = LoreFormat.fromConfiguration(loreConfig.getConfigurationSection("Format"));
-
             if (this.loreFormat == null) this.logger.warnServer("Invalid static LoreFormat for item: &e" + itemName + "&r please review your configuration(s)!");
-
         }
 
         if (this.loreList != null) {

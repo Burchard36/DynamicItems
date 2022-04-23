@@ -15,11 +15,11 @@ import static com.burchard36.github.RandomDrops.textOf;
 public class WordConfigs {
 
     private final RandomDrops plugin;
-    public List<String> verbList;
-    public List<String> adjectiveList;
-    public List<String> nounList;
-    public List<String> verberList;
-    public List<String> nameFormats;
+    private final List<String> verbList;
+    private final List<String> adjectiveList;
+    private final List<String> nounList;
+    private final List<String> verberList;
+    private final List<String> nameFormats;
 
     public WordConfigs(final RandomDrops pluginInstance) {
         this.plugin = pluginInstance;

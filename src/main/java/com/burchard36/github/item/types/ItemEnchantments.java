@@ -7,7 +7,6 @@ import com.burchard36.github.item.quality.ItemQualityField;
 import lombok.Getter;
 import org.bukkit.configuration.ConfigurationSection;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
